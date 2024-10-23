@@ -42,6 +42,7 @@
             margin-top: 20px;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" integrity="sha512-AEbVZ4PCHB5uxpJSBQof7q8dqP1rg7AGE6BBnUkAe4Vsciam3e1nqlmNT8gNXeMwNYSQ3WDDlEm69W48s1ljmg==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
 </head>
 <body>
 
@@ -52,19 +53,29 @@
 
 <nav>
     <a href="#">홈</a>
-    <a href="#">소개</a>
-    <a href="#">블로그 글</a>
+    <a href="#">블로그 개발</a>
     <a href="#">연락처</a>
 </nav>
 
-<div class="container">
-    <h2>첫 번째 블로그 글</h2>
-    <p>이곳에 첫 번째 블로그 글의 내용을 작성하세요. 블로그는 여러분의 생각과 경험을 공유하는 좋은 방법입니다!</p>
+<div class="container" id="blog-content">
+    <h2>블로그 글 불러오는 중...</h2>
 </div>
 
 <footer>
     <p>&copy; 2024 AISMIHU 블로그 | 생각을 공유하다</p>
 </footer>
+
+<script>
+    // Markdown 파일을 읽어와서 HTML로 변환해주는 함수
+    async function loadMarkdown() {
+        const response = await fetch('\\posts\\1-post.md'); // 마크다운 파일을 불러옴
+        const markdownText = await response.text(); // 텍스트로 변환
+        const htmlContent = marked(markdownText); // 마크다운을 HTML로 변환
+        document.getElementById('blog-content').innerHTML = htmlContent; // 변환된 HTML을 페이지에 삽입
+    }
+
+    loadMarkdown(); // 페이지 로드 시 실행
+</script>
 
 </body>
 </html>
