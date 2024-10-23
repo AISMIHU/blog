@@ -42,7 +42,8 @@
             margin-top: 20px;
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" integrity="sha512-AEbVZ4PCHB5uxpJSBQof7q8dqP1rg7AGE6BBnUkAe4Vsciam3e1nqlmNT8gNXeMwNYSQ3WDDlEm69W48s1ljmg==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+    <!-- marked.min.js를 CDN에서 가져오며, defer 속성으로 HTML 파싱 후 로드 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
 </head>
 <body>
 
@@ -68,13 +69,31 @@
 <script>
     // Markdown 파일을 읽어와서 HTML로 변환해주는 함수
     async function loadMarkdown() {
-        const response = await fetch('\\posts\\1-post.md'); // 마크다운 파일을 불러옴
-        const markdownText = await response.text(); // 텍스트로 변환
-        const htmlContent = marked(markdownText); // 마크다운을 HTML로 변환
-        document.getElementById('blog-content').innerHTML = htmlContent; // 변환된 HTML을 페이지에 삽입
+        try {
+            // 마크다운 파일을 fetch로 가져옴. 경로에 슬래시(/)를 사용해야 합니다.
+            const response = await fetch('/posts/1-post.md'); 
+            
+            // fetch 요청이 성공했는지 확인
+            if (!response.ok) {
+                throw new Error('Markdown 파일을 불러오는 중 오류 발생');
+            }
+
+            // 불러온 파일의 텍스트 내용을 추출
+            const markdownText = await response.text();
+            
+            // marked.parse() 함수로 마크다운을 HTML로 변환
+            const htmlContent = marked.parse(markdownText);
+            
+            // 변환된 HTML을 페이지의 'blog-content' 요소에 삽입
+            document.getElementById('blog-content').innerHTML = htmlContent;
+        } catch (error) {
+            // 오류가 발생한 경우 로그로 표시
+            console.error('마크다운 파일 로딩 실패:', error);
+        }
     }
 
-    loadMarkdown(); // 페이지 로드 시 실행
+    // 페이지 로드 시 마크다운 파일을 불러오고 HTML로 변환하는 함수 실행
+    loadMarkdown();
 </script>
 
 </body>
