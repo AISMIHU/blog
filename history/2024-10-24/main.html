@@ -48,17 +48,15 @@
 <body>
 
 <header>
-    <!-- 과거는 날짜 -->
-    <h1>AISMIHU</h1> 
-    <!-- 이곳은 과거의 블로그입니다-->
-    <p>여기는 간단한 블로그의 시작입니다.</p>
+    <h1>2024-10-24</h1>
+    <p>이곳은 과거의 블로그입니다</p>
 </header>
 
 <nav>
     <!-- ./history/날짜/# -->
-    <a href="./main.html">홈</a>
-    <a href="./blog.html">블로그 개발</a>
-    <a href="./contact.html">연락처</a>
+    <a href="./history/2024-10-24/main.html">홈</a>
+    <a href="./history/2024-10-24/blog.html">블로그 개발</a>
+    <a href="./history/2024-10-24/contact.html">연락처</a>
 </nav>
 
 <div class="container" id="2024-10-24">
@@ -78,7 +76,7 @@
     async function loadMarkdown_2024_10_24() {
         try {
             // 마크다운 파일을 fetch로 가져옴. 경로에 슬래시(/)를 사용해야 합니다.
-            const response = await fetch('/posts/2024-10-24.md'); 
+            const response = await fetch('/history/2024-10-24/posts/2024-10-24.md'); 
             
             // fetch 요청이 성공했는지 확인
             if (!response.ok) {
@@ -106,7 +104,7 @@
     async function loadMarkdown_2024_10_23() {
         try {
             // 마크다운 파일을 fetch로 가져옴. 경로에 슬래시(/)를 사용해야 합니다.
-            const response = await fetch('/posts/2024-10-23.md'); 
+            const response = await fetch('/history/2024-10-24/posts/2024-10-23.md'); 
             
             // fetch 요청이 성공했는지 확인
             if (!response.ok) {
