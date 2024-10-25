@@ -3,37 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>블로그 개발 일지</title>
-    <link rel="stylesheet" href="style.css">
+    <title>AISMIHU</title>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
     <!-- marked.min.js를 CDN에서 가져오며, defer 속성으로 HTML 파싱 후 로드 -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
-    <!-- JS 파일 불러오기 -->
-    <script src="blog.js" defer></script>
 </head>
 <body>
 
 <header>
-    <h1>AISMIHU</h1>
-    <p>블로그 개발 일지</p>
+    <!-- 과거는 날짜 -->
+    <h1>AISMIHU</h1> 
+    <!-- 이곳은 과거의 블로그입니다-->
+    <p>여기는 간단한 블로그의 시작입니다.</p>
 </header>
 
 <nav>
     <!-- ./history/날짜/# -->
-    <a href="./main.html">홈</a>
+    <a href="./history/2024-10-25/main.html">홈</a>
 
     <!-- 드롭다운 메뉴 생성 -->
      <div class="dropdown">
         <a href="#">개발</a>
         <div class="dropdown-content">
             <a href="#">kream manage selling</a>
-            <a href="./blog.html">blog</a>
+            <a href="./history/2024-10-25/blog.html">blog</a>
         </div>
      </div>
     
-    <a href="./contact.html">연락처</a>
+    <a href="./history/2024-10-25/contact.html">연락처</a>
 </nav>
 
-<div id ="blog-posts"></div> <!--모든 블로그 포스트 컨테이너-->
+<div id="blog-posts"></div> <!-- 모든 블로그 포스트 컨테이너 -->
 
 <footer>
     <p>&copy; 2024 AISMIHU 블로그 | 생각을 공유하다</p>

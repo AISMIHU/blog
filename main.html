@@ -4,44 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AISMIHU</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        nav {
-            background-color: #444;
-            padding: 10px;
-            text-align: center;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        .container {
-            padding: 20px;
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #333;
-            color: white;
-            margin-top: 20px;
-        }
-    </style>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
     <!-- marked.min.js를 CDN에서 가져오며, defer 속성으로 HTML 파싱 후 로드 -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
 </head>
@@ -57,79 +22,24 @@
 <nav>
     <!-- ./history/날짜/# -->
     <a href="./main.html">홈</a>
-    <a href="./blog.html">블로그 개발</a>
+
+    <!-- 드롭다운 메뉴 생성 -->
+     <div class="dropdown">
+        <a href="#">개발</a>
+        <div class="dropdown-content">
+            <a href="#">kream manage selling</a>
+            <a href="./blog.html">blog</a>
+        </div>
+     </div>
+    
     <a href="./contact.html">연락처</a>
 </nav>
 
-<div class="container" id="2024-10-24">
-    <h2>블로그 글 불러오는 중...</h2>
-</div>
-
-<div class="container" id="2024-10-23">
-    <h2>블로그 글 불러오는 중...</h2>
-</div>
+<div id="blog-posts"></div> <!-- 모든 블로그 포스트 컨테이너 -->
 
 <footer>
     <p>&copy; 2024 AISMIHU 블로그 | 생각을 공유하다</p>
 </footer>
-
-<script>
-    // Markdown 파일을 읽어와서 HTML로 변환해주는 함수
-    async function loadMarkdown_2024_10_24() {
-        try {
-            // 마크다운 파일을 fetch로 가져옴. 경로에 슬래시(/)를 사용해야 합니다.
-            const response = await fetch('/posts/2024-10-24.md'); 
-            
-            // fetch 요청이 성공했는지 확인
-            if (!response.ok) {
-                throw new Error('Markdown 파일을 불러오는 중 오류 발생');
-            }
-
-            // 불러온 파일의 텍스트 내용을 추출
-            const markdownText = await response.text();
-            
-            // marked.parse() 함수로 마크다운을 HTML로 변환
-            const htmlContent = marked.parse(markdownText);
-            
-            // 변환된 HTML을 페이지의 'blog-content' 요소에 삽입
-            document.getElementById('2024-10-24').innerHTML = htmlContent;
-        } catch (error) {
-            // 오류가 발생한 경우 로그로 표시
-            console.error('마크다운 파일 로딩 실패:', error);
-        }
-    }
-
-    // 페이지 로드 시 마크다운 파일을 불러오고 HTML로 변환하는 함수 실행
-    loadMarkdown_2024_10_24();
-
-    // Markdown 파일을 읽어와서 HTML로 변환해주는 함수
-    async function loadMarkdown_2024_10_23() {
-        try {
-            // 마크다운 파일을 fetch로 가져옴. 경로에 슬래시(/)를 사용해야 합니다.
-            const response = await fetch('/posts/2024-10-23.md'); 
-            
-            // fetch 요청이 성공했는지 확인
-            if (!response.ok) {
-                throw new Error('Markdown 파일을 불러오는 중 오류 발생');
-            }
-
-            // 불러온 파일의 텍스트 내용을 추출
-            const markdownText = await response.text();
-            
-            // marked.parse() 함수로 마크다운을 HTML로 변환
-            const htmlContent = marked.parse(markdownText);
-            
-            // 변환된 HTML을 페이지의 '$날짜' 요소에 삽입
-            document.getElementById('2024-10-23').innerHTML = htmlContent;
-        } catch (error) {
-            // 오류가 발생한 경우 로그로 표시
-            console.error('마크다운 파일 로딩 실패:', error);
-        }
-    }
-
-    // 페이지 로드 시 마크다운 파일을 불러오고 HTML로 변환하는 함수 실행
-    loadMarkdown_2024_10_23();
-</script>
 
 </body>
 </html>
